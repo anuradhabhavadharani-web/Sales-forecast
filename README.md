@@ -1,105 +1,145 @@
-📊 Sales Forecasting using ARIMA / SARIMA
 
-📌 Project Overview
+# 📊 Sales Forecasting using ARIMA
 
-This project focuses on **time-series sales forecasting** using **ARIMA and SARIMA models**.
-It analyzes historical sales data and predicts future sales trends to support **data-driven business decisions**.
+## 📌 Project Overview
 
-The project demonstrates how statistical models can be used to capture **trends and seasonality** in time-dependent data.
+This project focuses on time-series sales forecasting using the ARIMA (AutoRegressive Integrated Moving Average) model.
 
-🎯 Objectives
+It analyzes historical sales data, evaluates forecasting performance, and predicts future sales trends to support data-driven business decisions.
 
-* Analyze historical sales data
-* Build a time-series forecasting model
-* Predict future sales values
-* Visualize historical and forecasted sales trends
+The project includes data validation, model evaluation, and visualization of historical and forecasted sales.
 
-🛠️ Technologies Used
+## 🎯 Objectives
 
-* **Python**
-* **Pandas** → Data preprocessing and date handling
-* **Matplotlib** → Data visualization
-* **Statsmodels** → ARIMA / SARIMA modeling
+- Analyze historical sales data.
+- Build an ARIMA time-series forecasting model.
+- Evaluate model performance using MAE and RMSE.
+- Predict future sales values.
+- Validate input data before model training.
+- Visualize historical and forecasted sales trends.
 
-📂 Dataset Description
+## 🛠️ Technologies Used
+
+- **Python** – Programming language.
+- **Pandas** – Data preprocessing and date handling.
+- **NumPy** – Numerical operations.
+- **Matplotlib** – Data visualization.
+- **Statsmodels** – ARIMA modeling.
+- **Scikit-learn** – Model evaluation metrics.
+- **Unittest** – Automated testing.
+
+## 📂 Dataset Description
 
 The dataset (`sales.csv`) contains:
 
-* **Date** → Time period of sales
-* **Sales** → Sales values
+- **Date** – Date of the recorded sales.
+- **Sales** – Corresponding sales values.
 
-The data is structured as a **time series**, making it suitable for ARIMA/SARIMA modeling.
+The data is structured as a time series with monthly observations.
 
-🧠 Methodology
+## 🧠 Methodology
 
-1. Load sales data from CSV file
-2. Convert the date column to datetime format
-3. Set the date as the index
-4. Apply ARIMA for non-seasonal data
-5. Apply SARIMA for seasonal patterns (optional extension)
-6. Forecast sales for future time periods
-7. Visualize actual vs predicted sales
+1. Load historical sales data from the CSV file.
+2. Validate required columns, dates, and sales values.
+3. Convert dates into datetime format.
+4. Set the date column as the time-series index.
+5. Split the data chronologically into training and testing sets.
+6. Train an ARIMA(1,1,1) model.
+7. Evaluate predictions using MAE and RMSE.
+8. Retrain the model using the complete dataset.
+9. Forecast sales for the next six months.
+10. Visualize historical and forecasted sales.
 
-📈 Models Used
+## 📈 Model Used
 
-### 🔹 ARIMA (AutoRegressive Integrated Moving Average)
+### ARIMA (AutoRegressive Integrated Moving Average)
 
-* Suitable for non-seasonal time-series data
-* Captures trend and noise
+ARIMA is a statistical forecasting model suitable for non-seasonal time-series data.
 
-### 🔹 SARIMA (Seasonal ARIMA)
+The project uses the ARIMA(1,1,1) configuration:
 
-* Extension of ARIMA
-* Handles **seasonal patterns** in sales data
+- **p = 1:** Autoregressive order.
+- **d = 1:** Differencing order.
+- **q = 1:** Moving average order.
 
-▶️ How to Run the Project
+## 📊 Model Evaluation
 
-### 1️⃣ Install Required Libraries
+The model is evaluated using a chronological train-test split, where the latest six observations are reserved for testing.
+
+The following metrics are calculated:
+
+- **Mean Absolute Error (MAE):** Measures the average absolute difference between actual and predicted sales.
+- **Root Mean Squared Error (RMSE):** Measures prediction error while giving greater weight to larger errors.
+
+The metrics help assess the forecasting performance on unseen observations.
+
+## ▶️ How to Run the Project
+
+### 1. Clone the repository
 
 ```bash
-pip install pandas matplotlib statsmodels
+git clone <repository-url>
+cd Sales-forecast
 ```
 
-### 2️⃣ Run the Script
+### 2. Install required libraries
 
 ```bash
-python sales_forecasting.py
+python -m pip install pandas numpy matplotlib statsmodels scikit-learn
 ```
 
----
+### 3. Run the forecasting script
 
-📊 Output
+```bash
+python pep1.py
+```
 
-* Line graph showing:
+The program displays model evaluation metrics, generates a six-month sales forecast, and plots historical and forecasted sales.
 
-  * Historical sales data
-  * Forecasted future sales
-* Printed forecasted values with corresponding dates
+## 🧪 Running Automated Tests
 
-💼 Business Use Cases
+The project includes automated tests for data validation and forecasting functionality.
 
-* Sales planning and budgeting
-* Inventory management
-* Demand forecasting
-* Strategic business decision-making
+Run the tests using:
 
-⚠️ Limitations
+```bash
+python -m unittest discover -s tests -v
+```
 
-* Assumes linear patterns in data
-* Requires careful parameter tuning
-* Performance depends on data quality and stationarity
+The test suite checks:
 
-🔮 Future Enhancements
+- Valid dataset loading.
+- Missing required columns.
+- Invalid dates and sales values.
+- Duplicate dates.
+- Six-month forecast generation.
 
-* Automatic parameter selection using AIC/BIC
-* Incorporate external variables (holidays, promotions)
-* Build interactive dashboards
-* Deploy as a web application
+## 💼 Business Use Cases
 
-📝 Conclusion
+- Sales planning and budgeting.
+- Inventory management.
+- Demand forecasting.
+- Strategic business decision-making.
 
-This project demonstrates how **ARIMA and SARIMA models** can be effectively used for **sales forecasting**. It provides valuable insights into future trends and supports informed business decisions using time-series analysis.
+## ⚠️ Limitations
 
-👨‍💻 Author
+- Forecasting accuracy depends on historical data quality.
+- ARIMA does not explicitly model seasonal patterns.
+- Model performance depends on parameter selection.
+- More historical observations may be needed for reliable long-term forecasts.
 
-G.Bhavadharani
+## 🔮 Future Enhancements
+
+- Implement SARIMA for seasonal forecasting.
+- Automatic parameter selection using AIC/BIC.
+- Incorporate external variables such as holidays and promotions.
+- Build interactive dashboards.
+- Deploy as a web application.
+
+## 📝 Conclusion
+
+This project demonstrates time-series sales forecasting using ARIMA. By combining data validation, model evaluation, forecasting, and visualization, it provides a foundation for data-driven business decisions.
+
+## 👨‍💻 Author
+
+G. Bhavadharani
