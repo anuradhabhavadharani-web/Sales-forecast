@@ -1,4 +1,3 @@
-
 # 📊 Sales Forecasting using ARIMA
 
 ## 📌 Project Overview
